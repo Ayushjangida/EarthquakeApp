@@ -2,4 +2,6 @@
     <string name="app_name">EarthquakeApp</string>
     <string name="title_activity_maps">Map</string>
     <string name="more_information">More information</string>
+    <string name="no_info">No extra information available</string>
+    <string name="lat">lat</string>
 </resources>

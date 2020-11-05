@@ -87,6 +87,8 @@ public class QuakesListActivity extends AppCompatActivity {
                                 JSONArray coordinates = geometry.getJSONArray("coordinates");
                                 double lon = coordinates.getDouble(0);
                                 double lat = coordinates.getDouble(1);
+                                earthQuake.setLongitude(lon);
+                                earthQuake.setLatitude(lat);
 
                                 java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance();
                                 String formattedDate = dateFormat.format(new Date(Long.valueOf(properties.getLong("time"))).getTime());
@@ -100,7 +102,13 @@ public class QuakesListActivity extends AppCompatActivity {
                             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                    //Toast.makeText(QuakesListActivity.this,"Clicked " + i, Toast.LENGTH_SHORT).show();
+
+                                    Toast.makeText(QuakesListActivity.this,arrayList.get(i), Toast.LENGTH_SHORT).show();
+
+                                    Intent intent = new Intent(QuakesListActivity.this, MapsActivity.class);
+                                    intent.putExtra("place", arrayList.get(i));
+                                    startActivity(intent);
+                                    finish();
 
                                 }
                             });
